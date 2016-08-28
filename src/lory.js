@@ -265,7 +265,7 @@ export function lory (slider, opts) {
      * public
      * reset function: called on resize
      */
-    function reset ({ forResize = false}) {
+    function reset ({ forResize } = { forResize: false }) {
         const {infinite, ease, rewindSpeed, classNameActiveSlide} = options;
 
         slidesWidth = slideContainer.getBoundingClientRect()

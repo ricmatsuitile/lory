@@ -349,9 +349,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * public
 	     * reset function: called on resize
 	     */
-	    function reset(_ref) {
-	        var _ref$forResize = _ref.forResize;
-	        var forResize = _ref$forResize === undefined ? false : _ref$forResize;
+	    function reset() {
+	        var _ref = arguments.length <= 0 || arguments[0] === undefined ? { forResize: false } : arguments[0];
+	
+	        var forResize = _ref.forResize;
 	        var _options5 = options;
 	        var infinite = _options5.infinite;
 	        var ease = _options5.ease;
