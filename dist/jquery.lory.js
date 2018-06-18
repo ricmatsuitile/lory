@@ -152,6 +152,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    /**
 	     * private
+	     * update aria status for all slides
+	     */
+	    function updateAria(slides, currentIndex) {
+	        slides.forEach(function (element, index) {
+	            if (index !== currentIndex) {
+	                element.setAttribute('aria-hidden', 'true');
+	                return;
+	            }
+	
+	            element.removeAttribute('aria-hidden');
+	        });
+	    }
+	
+	    /**
+	     * private
 	     * setupInfinite: function to setup if infinite is set
 	     *
 	     * @param  {array} slideArray
@@ -168,11 +183,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        front.forEach(function (element) {
 	            var cloned = element.cloneNode(true);
 	
+	            cloned.setAttribute('aria-hidden', 'true');
+	
 	            slideContainer.appendChild(cloned);
 	        });
 	
 	        back.reverse().forEach(function (element) {
 	            var cloned = element.cloneNode(true);
+	
+	            cloned.setAttribute('aria-hidden', 'true');
 	
 	            slideContainer.insertBefore(cloned, slideContainer.firstChild);
 	        });
@@ -300,6 +319,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (classNameActiveSlide) {
 	            setActiveElement(slice.call(slides), index);
 	        }
+	
+	        updateAria(slice.call(slides), index);
 	
 	        dispatchSliderEvent('after', 'slide', {
 	            currentSlide: index
